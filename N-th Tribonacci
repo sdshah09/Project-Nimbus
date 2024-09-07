@@ -1,0 +1,41 @@
+import java.util.*;
+import java.io.*;
+
+class Solution {
+    public int tribonacci(int n) {
+        int[] memo = new int[n + 1];
+        Arrays.fill(memo, -1);
+        //return topDownDP(n, memo);
+        return bottomUpDP(n);
+    }
+
+    private int bottomUpDP(int n) {
+        if (n == 0) return 0;
+        if (n < 3) return 1;
+        int[] memo = new int[n + 1];
+        Arrays.fill(memo, -1);
+        memo[0] = 0;
+        memo[1] = 1;
+        memo[2] = 1;
+        for(int i = 3; i <= n; i++){
+            if(memo[i] == -1){
+                memo[i] = memo[i-1] + memo[i-2] + memo[i-3];
+            }
+        }
+        return memo[n];
+    }
+
+    private int topDownDP(int n, int[] memo) {
+        if (n == 0) return 0;
+        if (n < 3) return 1;
+
+        if(memo[n] == -1) {
+            memo[n] = topDownDP(n - 1, memo) + 
+                      topDownDP(n - 2, memo) +
+                      topDownDP(n - 3, memo);
+        }
+        return memo[n];
+    }
+
+    
+}
