@@ -1,0 +1,31 @@
+class Solution {
+    public int findJudge(int n, int[][] trust) {
+        // adjList
+        Map<Integer, Set<Integer>> adjList = new HashMap<>();
+        for (int i = 1; i <= n; i++) {
+           adjList.put(i, new HashSet<Integer>());
+        }
+
+        for (int[] arr: trust) {
+            adjList.get(arr[0]).add(arr[1]);
+        }
+
+        int isJudge = -1;
+        for (int i = 1; i <= n; i++){
+            if (adjList.get(i).size() == 0)
+            {
+                isJudge = i;
+            }
+        }
+
+        if (isJudge != -1) {
+            for(int i = 1; i <= n && i != isJudge; i++) {
+                if (!adjList.get(i).contains(isJudge)) {
+                    return -1;
+                }
+            }
+        }
+
+        return isJudge;
+    }
+}
