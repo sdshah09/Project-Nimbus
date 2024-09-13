@@ -45,10 +45,9 @@ class Solution {
             //now will get neighbours from adjList and make them as visited and add into 
             //queue and do the same
             for(int neighbor : adjList.get(node)){
-                if(!visited[fromInnerList]){
-                    queue.add(fromInnerList);
-                    visited[fromInnerList] = true; //mark them visited then add to queue
-                    
+                if(!visited[neighbor]){
+                    queue.add(neighbor);
+                    visited[neighbor] = true; //mark them visited then add to queue 
                 }
             }
         }
