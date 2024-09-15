@@ -48,3 +48,7 @@ class Solution:
             )
         
         return memo[index][maxWeight]
+
+if __name__ == "__main__":
+    sol = Solution()
+    print(sol.knapsack([2,3,5],[20,10,25],3,5))
